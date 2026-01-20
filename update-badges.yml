@@ -1,0 +1,33 @@
+name: Auto Badges
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '0 2 * * 1'  # Tous les lundis
+
+jobs:
+  badges:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install deps
+      run: |
+        pip install -r requirements.txt  # ou pip install scikit-learn pandas
+    - name: Generate badges
+      run: |
+        echo '<!-- AUTO BADGES -->' > badges.md
+        for pkg in scikit-learn pandas numpy matplotlib; do
+          ver=$(pip show $pkg | grep Version | cut -d: -f2 | xargs)
+          echo "![$pkg](https://img.shields.io/badge/$pkg-$ver-blue)" >> badges.md
+        done
+    - name: Update README
+      run: |
+        sed -i '/<!-- AUTO BADGES -->/,/<!-- \/AUTO BADGES -->/d' README.md
+        cat badges.md >> README.md
+        echo '<!-- /AUTO BADGES -->' >> README.md
+    - uses: stefanzweifel/git-auto-commit-action@v5
+      with:
+        commit_message: "🤖 Update badges automatically"
