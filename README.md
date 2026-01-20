@@ -9,6 +9,8 @@
 <img width="430" height="117" alt="image" src="https://github.com/user-attachments/assets/4d9a443a-a6b4-4e4a-923f-198199892c9a" />
 
 ### Description
-In this project End-to-end analysis of SpaceX launch data: mission success prediction, launch trends, customer diversity, and payload optimization. 
-Complete ML pipeline with EDA, feature engineering, and deployment.
+This project is an end‑to‑end analysis of SpaceX Falcon 9 launch data focused on mission success prediction, launch trends, customer diversity, and payload optimization. The core idea is that predicting whether the first stage will land and be reused allows data‑driven estimation of launch costs and understanding of how mission parameters affect reusability.
+​
 
+The work includes a complete ML pipeline: data acquisition from public SpaceX sources, exploratory data analysis (EDA), and feature engineering on variables such as payload mass, orbit type, launch site, and customer. A supervised learning model is trained and evaluated to classify first‑stage landing outcomes, and the results are surfaced through dashboards and visualizations to support technical and business decision‑making.
+​
