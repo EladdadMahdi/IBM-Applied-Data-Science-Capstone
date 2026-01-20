@@ -35,4 +35,4 @@ in this section
    - Create interactive geospatial maps of launch sites and landing outcomes, including proximity analysis to nearby infrastructure, to explore geographic patterns.
 
 7. **Machine learning prediction**  
-   - Implement and evaluate supervised learning models (e.g., logistic regression, SVM, decision trees, k-NN) to predict first-stage landing success, forming a deployable ML component that supports mission success prediction, launch trend analysis, customer diversity insights, and payload optimization.
+   - Implement and evaluate supervised learning models (e.g., logistic regression, SVM, decision trees, k-NN) to predict first-stage landing success, forming a deployable ML component that       supports mission success prediction, launch trend analysis, customer diversity insights, and payload optimization.
