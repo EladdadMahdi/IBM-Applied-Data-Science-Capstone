@@ -16,11 +16,23 @@ The work includes a complete ML pipeline: data acquisition from public SpaceX so
 ​
 ### Methodologies
 
-1. #Data Collection through API
-2. #Data Collection with Web Scraping
-3. #Data Wrangling
-4. #Exploratory Data Analysis with SQL
-5. #Exploratory Data Analysis with Data Visualization
-6. #Interactive Visual Analytics with Folium
-7. #Machine Learning Prediction
+1. **Data collection through API**  
+   - Ingest launch data from the official SpaceX REST API and normalize JSON responses into structured tabular formats.
 
+2. **Data collection with web scraping**  
+   - Scrape external sources (e.g., launch logs, mission pages) to enrich the dataset with payload details, customer information, and orbit metadata.
+
+3. **Data wrangling**  
+   - Clean, filter, and merge heterogeneous data sources; handle missing values; engineer target labels for first-stage landing outcomes; and export curated datasets for analysis and modeling.
+
+4. **Exploratory Data Analysis with SQL**  
+   - Use SQL queries to compute aggregates and trends such as yearly success rates, performance by launch site, payload statistics, and customer distribution.
+
+5. **Exploratory Data Analysis with data visualization**  
+   - Build visualizations (e.g., success rate vs. payload mass, orbit, launch site, and year) to uncover relationships between mission parameters and landing success.
+
+6. **Interactive visual analytics with Folium**  
+   - Create interactive geospatial maps of launch sites and landing outcomes, including proximity analysis to nearby infrastructure, to explore geographic patterns.
+
+7. **Machine learning prediction**  
+   - Implement and evaluate supervised learning models (e.g., logistic regression, SVM, decision trees, k-NN) to predict first-stage landing success, forming a deployable ML component that supports mission success prediction, launch trend analysis, customer diversity insights, and payload optimization.
