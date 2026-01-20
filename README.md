@@ -14,4 +14,13 @@ This project is an end‑to‑end analysis of SpaceX Falcon 9 launch data focuse
 
 The work includes a complete ML pipeline: data acquisition from public SpaceX sources, exploratory data analysis (EDA), and feature engineering on variables such as payload mass, orbit type, launch site, and customer. A supervised learning model is trained and evaluated to classify first‑stage landing outcomes, and the results are surfaced through dashboards and visualizations to support technical and business decision‑making.
 ​
-### Objectives
+### Methodologies
+
+1. Data Collection through API
+2. Data Collection with Web Scraping
+3. Data Wrangling
+4. Exploratory Data Analysis with SQL
+5. Exploratory Data Analysis with Data Visualization
+6. Interactive Visual Analytics with Folium
+7. Machine Learning Prediction
+
