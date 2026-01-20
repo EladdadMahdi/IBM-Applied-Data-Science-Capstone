@@ -18,6 +18,8 @@ The work includes a complete ML pipeline: data acquisition from public SpaceX so
 
 1. **Data collection through API**  
    - Ingest launch data from the official SpaceX REST API and normalize JSON responses into structured tabular formats.
+   - 
+<img width="769" height="136" alt="image" src="https://github.com/user-attachments/assets/f734b838-9013-4627-98d9-a9ef858e982f" />
 
 2. **Data collection with web scraping**  
    - Scrape external sources (e.g., launch logs, mission pages) to enrich the dataset with payload details, customer information, and orbit metadata.
