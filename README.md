@@ -1,5 +1,9 @@
 ## Applied Data Science Capstone Project
 
+<!-- AUTO BADGES -->
+
+<!-- /AUTO BADGES -->
+
 ![Python](https://img.shields.io/badge/Python-3.9-blue)
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-v3.8.2-blue)
 ![Pandas](https://img.shields.io/badge/Pandas-v2.2.0-150458)
