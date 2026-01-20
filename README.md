@@ -16,11 +16,11 @@ The work includes a complete ML pipeline: data acquisition from public SpaceX so
 ​
 ### Methodologies
 
-1. Data Collection through API
-2. Data Collection with Web Scraping
-3. Data Wrangling
-4. Exploratory Data Analysis with SQL
-5. Exploratory Data Analysis with Data Visualization
-6. Interactive Visual Analytics with Folium
-7. Machine Learning Prediction
+#1. Data Collection through API
+#2. Data Collection with Web Scraping
+#3. Data Wrangling
+#4. Exploratory Data Analysis with SQL
+#5. Exploratory Data Analysis with Data Visualization
+#6. Interactive Visual Analytics with Folium
+#7. Machine Learning Prediction
 
