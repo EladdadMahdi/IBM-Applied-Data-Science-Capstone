@@ -8,7 +8,7 @@
 
 <img width="430" height="117" alt="image" src="https://github.com/user-attachments/assets/4d9a443a-a6b4-4e4a-923f-198199892c9a" />
 
-### Description
+### Overview
 This project is an end‑to‑end analysis of SpaceX Falcon 9 launch data focused on mission success prediction, launch trends, customer diversity, and payload optimization. The core idea is that predicting whether the first stage will land and be reused allows data‑driven estimation of launch costs and understanding of how mission parameters affect reusability.
 ​
 
