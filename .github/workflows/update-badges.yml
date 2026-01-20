@@ -1,0 +1,31 @@
+name: Auto Badges
+on: [push]
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install common packages
+      run: pip install scikit-learn pandas numpy matplotlib seaborn
+    - name: Generate badges
+      run: |
+        echo '<!-- AUTO BADGES -->' > temp_badges.md
+        for pkg in scikit-learn pandas numpy matplotlib seaborn Python; do
+          if [ "$pkg" = "Python" ]; then
+            ver=$(python --version | cut -d' ' -f2)
+          else
+            ver=$(pip show $pkg | grep Version | cut -d: -f2 | xargs || echo "latest")
+          fi
+          echo "![$pkg](https://img.shields.io/badge/$pkg-$ver-blue)" >> temp_badges.md
+        done
+        echo '<!-- /AUTO BADGES -->' >> temp_badges.md
+    - name: Update README
+      run: |
+        sed -i '/<!-- AUTO BADGES -->/,/<!-- \/AUTO BADGES -->/c\' README.md
+        cat temp_badges.md >> README.md
+    - uses: EndBug/add-and-commit@v9
+      with:
+        message: '🤖 Update badges'
