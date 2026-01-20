@@ -3,12 +3,13 @@
 <!-- AUTO BADGES -->
 <!-- /AUTO BADGES -->
 
+<!--
 ![Python](https://img.shields.io/badge/Python-3.9-blue)
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-v3.8.2-blue)
 ![Pandas](https://img.shields.io/badge/Pandas-v2.2.0-150458)
 ![NumPy](https://img.shields.io/badge/NumPy-v1.26.3-orange)
 ![scikit-learn](https://img.shields.io/badge/scikit--learn-v1.8.0-blue.svg?logo=scikit-learn&logoColor=white)
-
+-->
 <img width="430" height="117" alt="image" src="https://github.com/user-attachments/assets/4d9a443a-a6b4-4e4a-923f-198199892c9a" />
 
 ### Overview
