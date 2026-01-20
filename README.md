@@ -4,7 +4,7 @@
 ![Matplotlib](https://img.shields.io/badge/Matplotlib-v3.8.2-blue)
 ![Pandas](https://img.shields.io/badge/Pandas-v2.2.0-150458)
 ![NumPy](https://img.shields.io/badge/NumPy-v1.26.3-orange)
-![Scikit-learn](https://img.shields.io/badge/Scikit-learn-v1.26.3-orange)
+![Scikit-learn](https://img.shields.io/badge/Scikit-learn-v1.8.0-blue)
 
 <img width="430" height="117" alt="image" src="https://github.com/user-attachments/assets/4d9a443a-a6b4-4e4a-923f-198199892c9a" />
 
@@ -18,10 +18,6 @@ The work includes a complete ML pipeline: data acquisition from public SpaceX so
 in this section 
 1. **Data collection through API**  
    - Ingest launch data from the official SpaceX REST API and normalize JSON responses into structured tabular formats.
-   
-<p align="center">
-<img width="769" height="136" alt="image" src="https://github.com/user-attachments/assets/f734b838-9013-4627-98d9-a9ef858e982f" />
-</p>
 
 2. **Data collection with web scraping**  
    - Scrape external sources (e.g., launch logs, mission pages) to enrich the dataset with payload details, customer information, and orbit metadata.
