@@ -1,9 +1,11 @@
 # IBM Data Science professional certificate Applied Capstone Project : SpaceX Falcon 9 First‑Stage Landing Prediction
 
 <!-- AUTO BADGES -->
+
 ![scikit-learn](https://img.shields.io/badge/scikit_learn-1.8.0-blue.svg)
 ![pandas](https://img.shields.io/badge/pandas-2.2.3-green.svg)
 ![numpy](https://img.shields.io/badge/NumPy-1.26.4-yellow.svg)
+
 <!-- /AUTO BADGES -->
 
 
@@ -48,7 +50,7 @@ graph LR
    - Scrape external sources (e.g., Wikipedia Falcon 9 launch logs, mission pages) using BeautifulSoup.  
    - Enrich the dataset with payload details, customer information, and orbit metadata.
      
-#### Web Scraping Pipeline
+_Web Scraping Pipeline:_
 
 ```mermaid
 graph LR
@@ -64,6 +66,16 @@ graph LR
    - Handle missing values and engineer a binary target for first‑stage landing success.  
    - Create informative features from payload, orbit, launch site, vehicle, and customer attributes.
 
+_Data Wrangling Pipeline:_
+
+```mermaid
+graph LR
+    A["Explore dataset structure<br/>columns, data types,<br/>sample records"] 
+        --> B["Calculate number of launches<br/>occurrences for each site"]
+        --> C["Create binary label<br/>for landing success"]
+        --> D["Export data to CSV"]
+
+````
 4. **Exploratory Data Analysis with SQL**  
    - Load curated tables into a relational database (SQLite/Db2).  
    - Use SQL queries to compute aggregates and trends (yearly success rates, performance by launch site, payload and customer statistics).
