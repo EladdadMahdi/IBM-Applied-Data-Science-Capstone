@@ -1,46 +1,30 @@
-name: Auto Update Badges
-on:
-  push:
-    branches: [main]
-  workflow_dispatch:
+name: Update Badges
+on: [push, workflow_dispatch]
+permissions:
+  contents: write  # ← Cette ligne fixe le 403 !
 
 jobs:
-  update-badges:
+  update:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          
-      - name: Install packages
-        run: |
-          pip install scikit-learn pandas numpy matplotlib seaborn
-          
-      - name: Generate badges
-        run: |
-          badges=""
-          for pkg in scikit-learn pandas numpy matplotlib seaborn; do
-            ver=$(pip show $pkg 2>/dev/null | grep Version | cut -d: -f2 | xargs)
-            if [ ! -z "$ver" ]; then
-              badges="$badges\n![$pkg](https://img.shields.io/badge/${pkg}-${ver}-blue)"
-            fi
-          done
-          
-          # Update README
-          awk -v badges="$badges" '
-          /<!-- AUTO BADGES -->/ {print; print badges; f=1; next}
-          /<!-- \/AUTO BADGES -->/ {f=0}
-          !f' README.md > README_temp.md
-          mv README_temp.md README.md
-          
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "🤖 Auto-update badges"
-          file_pattern: README.md
+    - uses: actions/checkout@v4
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install packages
+      run: pip install scikit-learn pandas numpy matplotlib seaborn
+    - name: Generate badges
+      run: |
+        echo '<!-- AUTO BADGES -->' > badges.txt
+        echo '![scikit-learn](https://img.shields.io/badge/scikit_learn-1.8.0-blue)' >> badges.txt
+        echo '![pandas](https://img.shields.io/badge/pandas-2.2.3-green)' >> badges.txt
+        echo '![numpy](https://img.shields.io/badge/numpy-1.26.4-yellow)' >> badges.txt
+        echo '<!-- /AUTO BADGES -->' >> badges.txt
+    - name: Update README
+      run: |
+        sed -i '/<!-- AUTO BADGES -->/,/<!-- \/AUTO BADGES -->/d' README.md
+        cat badges.txt >> README.md
+    - name: Commit
+      uses: EndBug/add-and-commit@v9
+      with:
+        message: '🤖 Update badges'
