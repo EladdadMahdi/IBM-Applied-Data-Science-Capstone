@@ -189,7 +189,7 @@ You can optionally add Random Forest or Gradient Boosting models.
 
 Typical pipeline:
 
-1. Split data into training and test sets (e.g., 70/30) with stratification on `landing_success`.  
+1. Split data into training and test sets with stratification on `landing_success`.  
 2. Build a preprocessing pipeline with:
    - One‑hot encoding for categorical features.  
    - StandardScaler for numeric features.
@@ -241,3 +241,11 @@ k-NN                 <VAL>     <VAL>      <VAL>   <VAL>     <VAL>
 ├── requirements.txt             # Python dependencies
 ├── .github/workflows/update_badges.yml  # Python dependencies badges
 ├── README.md                    # Project documentation
+```
+### Acknowledgments
+
+- IBM and Coursera for the Applied Data Science Capstone template and instructional material.
+- SpaceX for providing public launch data through the SpaceX API.
+- The open‑source Python data science community for the tools that make this project possible.
+
+
