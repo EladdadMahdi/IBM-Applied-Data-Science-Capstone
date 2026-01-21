@@ -1,13 +1,12 @@
 # IBM Data Science professional certificate Applied Capstone Project : SpaceX Falcon 9 First‑Stage Landing Prediction
 
 <!-- AUTO BADGES -->
+
 ![scikit-learn](https://img.shields.io/badge/scikit_learn-1.8.0-blue.svg)
 ![pandas](https://img.shields.io/badge/pandas-2.2.3-green.svg)
 ![numpy](https://img.shields.io/badge/NumPy-1.26.4-yellow.svg)
+
 <!-- /AUTO BADGES -->
-
-
-
 
 <img width="430" height="117" alt="image" src="https://github.com/user-attachments/assets/4d9a443a-a6b4-4e4a-923f-198199892c9a" />
 
@@ -34,7 +33,7 @@ The project is structured into several modules, each building on the previous on
    - Request and ingest launch data from the official SpaceX API.  
    - Normalize nested JSON responses into structured tabular formats suitable for analysis.
 
-***Data Collection and Ingestion Flow***
+****Data Collection and Ingestion Flow****
 
 ```mermaid
 graph LR
