@@ -34,7 +34,18 @@ The project is structured into several modules, each building on the previous on
 1. **Data collection through API**  
    - Request and ingest launch data from the official SpaceX API.  
    - Normalize nested JSON responses into structured tabular formats suitable for analysis.
+   - 
+   ## Data Collection and Ingestion Flow
 
+```mermaid
+graph LR
+    A["Data Collection using GET<br/>request to the SpaceX API"]
+        --> B["Decode response as JSON<br/>and load into DataFrame<br/>using json_normalize()"]
+        --> C["Data cleaning process"]
+        --> D["Falcon 9 rocket web scraping<br/>from Wikipedia using BeautifulSoup"]
+        --> E["Parse HTML tables<br/>into DataFrame"]
+        --> F["Export to CSV<br/>for future analysis"]
+````
 2. **Data collection with web scraping**  
    - Scrape external sources (e.g., Wikipedia Falcon 9 launch logs, mission pages) using BeautifulSoup.  
    - Enrich the dataset with payload details, customer information, and orbit metadata.
