@@ -33,7 +33,7 @@ The project is structured into several modules, each building on the previous on
    - Request and ingest launch data from the official SpaceX API.  
    - Normalize nested JSON responses into structured tabular formats suitable for analysis.
 
-**#### Data Collection and Ingestion Flow**
+***Data Collection and Ingestion Flow***
 
 ```mermaid
 graph LR
