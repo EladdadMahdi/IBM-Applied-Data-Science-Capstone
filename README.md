@@ -219,9 +219,14 @@ k-NN                 <VAL>     <VAL>      <VAL>   <VAL>     <VAL>
 
 ``` text
 ├── data/
-│   ├── raw/                     # Raw API responses and scraped data
-│   ├── processed/               # Cleaned and merged datasets
-│   └── features/                # Train/test feature matrices
+│   ├── Module_1 /
+|       ├──               #
+│   ├── Module_2/
+|        ├──          # Cleaned and merged datasets
+│   ├── Module_3/
+|        ├──
+|   ├── Module_4/
+|   ├── Module_5/             # Train/test feature matrices
 ├── notebooks/
 │   ├── 1_data_collection_api.ipynb
 │   ├── 2_web_scraping.ipynb
@@ -230,16 +235,8 @@ k-NN                 <VAL>     <VAL>      <VAL>   <VAL>     <VAL>
 │   ├── 5_eda_visualization.ipynb
 │   ├── 6_geospatial_analysis.ipynb
 │   └── 7_ml_modeling.ipynb
-├── src/
-│   ├── data/                    # API calls, scraping, DB loading scripts
-│   ├── features/                # Feature engineering and preprocessing
-│   ├── models/                  # Training, tuning, evaluation code
-│   └── visualization/           # Plotting utilities
 ├── dashboards/
 │   ├── spacex_dash_app.py       # Plotly Dash app
-│   └── assets/                  # Static assets (CSS, images)
-├── tests/                       # Unit tests (optional)
 ├── requirements.txt             # Python dependencies
-├── environment.yml              # Conda environment (optional)
+├── .github/workflows/update_badges.yml  # Python dependencies badges
 ├── README.md                    # Project documentation
-└── LICENSE
