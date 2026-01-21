@@ -214,7 +214,35 @@ In line with the IBM Applied Data Science Capstone structure, multiple supervise
 - Decision Tree Classifier  
 - k‑Nearest Neighbors (k‑NN)  
 
-You can optionally add Random Forest or Gradient Boosting models.
+_Machine Learning Pipeline:_
+
+```mermaid
+graph TD
+    A["Data Ingestion<br/>NumPy/Pandas"] --> B["Data Preprocessing"]
+    
+    subgraph Preprocess["Preprocessing"]
+        B1["Handle Missing Values"]
+        B2["One-hot Encode<br/>Categorical"]
+        B3["Scale Features"]
+    end
+    
+    B --> Preprocess
+    Preprocess --> C["Train/Test Split"]
+    
+    subgraph ML["ML Pipeline"]
+        D["Models:<br/>LogReg, SVM, DT, RF"]
+        E["Hyperparameter Tuning<br/>GridSearchCV"]
+    end
+    
+    C --> ML
+    
+    subgraph Eval["Model Optimization"]
+        F["Model Evaluation<br/>Accuracy Metrics"]
+        G["Select Best Model"]
+    end
+    
+    ML --> Eval
+````You can optionally add Random Forest or Gradient Boosting models.
 
 ### Training and evaluation
 
