@@ -206,7 +206,7 @@ Metrics reported:
 - ROC–AUC  
 - Confusion matrix  
 
-You can summarize your final results in a table like:
+Summary of results :
 
 ```text
 Model               Accuracy  Precision  Recall  F1-score  ROC-AUC
