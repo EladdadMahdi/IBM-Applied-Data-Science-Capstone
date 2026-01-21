@@ -243,7 +243,7 @@ graph TD
     end
     
     ML --> Eval
-````You can optionally add Random Forest or Gradient Boosting models.
+```
 
 ### Training and evaluation
 
