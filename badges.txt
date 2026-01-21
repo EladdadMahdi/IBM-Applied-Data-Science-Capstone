@@ -1,0 +1,5 @@
+<!-- AUTO BADGES -->
+![scikit-learn](https://img.shields.io/badge/scikit_learn-1.8.0-blue)
+![pandas](https://img.shields.io/badge/pandas-2.2.3-green)
+![numpy](https://img.shields.io/badge/numpy-1.26.4-yellow)
+<!-- /AUTO BADGES -->

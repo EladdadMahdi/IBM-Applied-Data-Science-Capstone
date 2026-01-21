@@ -1,7 +1,5 @@
 ## Applied Data Science Capstone Project
 
-<!-- AUTO BADGES -->
-<!-- /AUTO BADGES -->
 
 <img width="430" height="117" alt="image" src="https://github.com/user-attachments/assets/4d9a443a-a6b4-4e4a-923f-198199892c9a" />
 
@@ -33,3 +31,8 @@ in this section
 
 7. **Machine learning prediction**  
    - Implement and evaluate supervised learning models (e.g., logistic regression, SVM, decision trees, k-NN) to predict first-stage landing success, forming a deployable ML component that       supports mission success prediction, launch trend analysis, customer diversity insights, and payload optimization.
+<!-- AUTO BADGES -->
+![scikit-learn](https://img.shields.io/badge/scikit_learn-1.8.0-blue)
+![pandas](https://img.shields.io/badge/pandas-2.2.3-green)
+![numpy](https://img.shields.io/badge/numpy-1.26.4-yellow)
+<!-- /AUTO BADGES -->
