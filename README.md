@@ -219,7 +219,7 @@ In line with the IBM Applied Data Science Capstone structure, multiple supervise
 _Machine Learning Pipeline:_
 
 ```mermaid
-graph TD
+graph LR
     A["Data Ingestion<br/>NumPy/Pandas"] --> B["Data Preprocessing"]
     
     subgraph Preprocess["Preprocessing"]
