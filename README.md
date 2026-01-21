@@ -66,11 +66,6 @@ graph LR
         --> C["Extract all column names<br/>from HTML table header"]
         --> D["Create DataFrame by<br/>parsing launch HTML tables"]
         --> E["Export data to CSV"]
-    
-    style A fill:#e3f2fd
-    style B fill:#fff3e0
-    style E fill:#e8f5e8
-
 ```
 
 3. **Data wrangling and feature engineering**  
