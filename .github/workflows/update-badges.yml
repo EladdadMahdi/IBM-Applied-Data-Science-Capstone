@@ -8,17 +8,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Add badges
+    - name: Insert badges at top
       run: |
-        cat >> README.md << 'EOF'
-
+        # Créer badges
+        cat > badges.md << 'EOF'
         <!-- AUTO BADGES -->
-        ![scikit-learn](https://img.shields.io/badge/scikit_learn-1.8.0-blue.svg?logo=scikit-learn)
-        ![pandas](https://img.shields.io/badge/pandas-2.2.3-green.svg?logo=pandas)
-        ![numpy](https://img.shields.io/badge/NumPy-1.26.4-yellow.svg?logo=numpy)
-        ![matplotlib](https://img.shields.io/badge/Matplotlib-3.8.2-orange.svg?logo=matplotlib)
+        ![scikit-learn](https://img.shields.io/badge/scikit_learn-1.8.0-blue.svg)
+        ![pandas](https://img.shields.io/badge/pandas-2.2.3-green.svg)
+        ![numpy](https://img.shields.io/badge/NumPy-1.26.4-yellow.svg)
         <!-- /AUTO BADGES -->
+        
         EOF
+        
+        # Supprimer anciennes badges
+        sed -i '/<!-- AUTO BADGES -->/,/<!-- \/AUTO BADGES -->/d' README.md
+        
+        # Insérer après ligne 2 (après le titre)
+        sed -i '2r badges.md' README.md
+        
     - uses: stefanzweifel/git-auto-commit-action@v5
       with:
-        commit_message: '🤖 Add badges'
+        commit_message: '🤖 Badges en haut'
