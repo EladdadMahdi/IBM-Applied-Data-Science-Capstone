@@ -1,4 +1,5 @@
-## Applied Data Science Capstone Project
+# IBM Data Science professional certificate Applied Capstone Project :
+# SpaceX Falcon 9 First‑Stage Landing Prediction
 
 <!-- AUTO BADGES -->
 ![scikit-learn](https://img.shields.io/badge/scikit_learn-1.8.0-blue.svg)
@@ -9,8 +10,6 @@
 
 
 <img width="430" height="117" alt="image" src="https://github.com/user-attachments/assets/4d9a443a-a6b4-4e4a-923f-198199892c9a" />
-
-# SpaceX Falcon 9 First‑Stage Landing Prediction
 
 ## Project Overview
 
