@@ -1,30 +1,24 @@
 name: Update Badges
 on: [push, workflow_dispatch]
 permissions:
-  contents: write  # ← Cette ligne fixe le 403 !
+  contents: write
 
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - uses: actions/setup-python@v5
-      with:
-        python-version: '3.11'
-    - name: Install packages
-      run: pip install scikit-learn pandas numpy matplotlib seaborn
-    - name: Generate badges
+    - name: Add badges
       run: |
-        echo '<!-- AUTO BADGES -->' > badges.txt
-        echo '![scikit-learn](https://img.shields.io/badge/scikit_learn-1.8.0-blue)' >> badges.txt
-        echo '![pandas](https://img.shields.io/badge/pandas-2.2.3-green)' >> badges.txt
-        echo '![numpy](https://img.shields.io/badge/numpy-1.26.4-yellow)' >> badges.txt
-        echo '<!-- /AUTO BADGES -->' >> badges.txt
-    - name: Update README
-      run: |
-        sed -i '/<!-- AUTO BADGES -->/,/<!-- \/AUTO BADGES -->/d' README.md
-        cat badges.txt >> README.md
-    - name: Commit
-      uses: EndBug/add-and-commit@v9
+        cat >> README.md << 'EOF'
+
+        <!-- AUTO BADGES -->
+        ![scikit-learn](https://img.shields.io/badge/scikit_learn-1.8.0-blue.svg?logo=scikit-learn)
+        ![pandas](https://img.shields.io/badge/pandas-2.2.3-green.svg?logo=pandas)
+        ![numpy](https://img.shields.io/badge/NumPy-1.26.4-yellow.svg?logo=numpy)
+        ![matplotlib](https://img.shields.io/badge/Matplotlib-3.8.2-orange.svg?logo=matplotlib)
+        <!-- /AUTO BADGES -->
+        EOF
+    - uses: stefanzweifel/git-auto-commit-action@v5
       with:
-        message: '🤖 Update badges'
+        commit_message: '🤖 Add badges'
