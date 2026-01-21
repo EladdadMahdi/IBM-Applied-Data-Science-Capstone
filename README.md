@@ -32,15 +32,3 @@ in this section
 
 7. **Machine learning prediction**  
    - Implement and evaluate supervised learning models (e.g., logistic regression, SVM, decision trees, k-NN) to predict first-stage landing success, forming a deployable ML component that       supports mission success prediction, launch trend analysis, customer diversity insights, and payload optimization.
-<!-- AUTO BADGES -->
-![scikit-learn](https://img.shields.io/badge/scikit_learn-1.8.0-blue)
-![pandas](https://img.shields.io/badge/pandas-2.2.3-green)
-![numpy](https://img.shields.io/badge/numpy-1.26.4-yellow)
-<!-- /AUTO BADGES -->
-
-<!-- AUTO BADGES -->
-![scikit-learn](https://img.shields.io/badge/scikit_learn-1.8.0-blue.svg?logo=scikit-learn)
-![pandas](https://img.shields.io/badge/pandas-2.2.3-green.svg?logo=pandas)
-![numpy](https://img.shields.io/badge/NumPy-1.26.4-yellow.svg?logo=numpy)
-![matplotlib](https://img.shields.io/badge/Matplotlib-3.8.2-orange.svg?logo=matplotlib)
-<!-- /AUTO BADGES -->
