@@ -51,6 +51,26 @@ graph LR
 2. **Data collection with web scraping**  
    - Scrape external sources (e.g., Wikipedia Falcon 9 launch logs, mission pages) using BeautifulSoup.  
    - Enrich the dataset with payload details, customer information, and orbit metadata.
+   - 
+### 2. Data Collection with Web Scraping
+
+**Overview:** Scrape external sources (Wikipedia Falcon 9 launch tables) to enrich API data with payload details and customer information.
+
+### Web Scraping Pipeline
+
+```mermaid
+graph LR
+    A["Apply HTTP GET<br/>method to request<br/>Falcon 9 HTML page"] 
+        --> B["Create BeautifulSoup<br/>object from HTML response"]
+        --> C["Extract all column names<br/>from HTML table header"]
+        --> D["Create DataFrame by<br/>parsing launch HTML tables"]
+        --> E["Export data to CSV"]
+    
+    style A fill:#e3f2fd
+    style B fill:#fff3e0
+    style E fill:#e8f5e8
+
+```
 
 3. **Data wrangling and feature engineering**  
    - Clean, filter, and merge heterogeneous data sources.  
