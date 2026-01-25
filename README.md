@@ -6,24 +6,13 @@
 ![numpy](https://img.shields.io/badge/NumPy-1.26.4-yellow.svg)
 <!-- /AUTO BADGES -->
 
-
-
-
-
-
-
-
-
-
-
-
 <img width="430" height="117" alt="image" src="https://github.com/user-attachments/assets/4d9a443a-a6b4-4e4a-923f-198199892c9a" />
 
 ## Project Overview
 
-This repository contains an end‑to‑end data science capstone project focused on predicting the landing outcome of the SpaceX Falcon 9 first stage. The motivation is that accurately predicting whether the first stage will land and be reused allows better estimation of launch costs and a deeper understanding of how mission parameters (payload mass, orbit, launch site, customer, etc.) affect reusability [attached_file:1][web:21].
+This repository implements an end-to-end data science capstone project to predict whether the SpaceX Falcon 9 first stage will successfully land (and be reusable), following the IBM Applied Data Science Capstone structure.
 
-The project implements a full ML pipeline, from raw data acquisition using the official SpaceX REST API and web scraping, through data wrangling and SQL‑based exploratory data analysis (EDA), to machine learning models that classify landing outcomes. Interactive visualizations and dashboards are used to surface insights for both technical and business stakeholders [attached_file:1][web:22].
+The workflow covers data acquisition (SpaceX API + web sources), data wrangling, EDA (SQL + visualization), interactive analytics (Folium + Dash), and ML classification models.
 
 > **Key results (to fill in later)**
 > - Best model: `<MODEL_NAME>`
@@ -32,56 +21,83 @@ The project implements a full ML pipeline, from raw data acquisition using the o
 > - ROC–AUC: `<ROC_AUC>`
 > - Top features: `<FEATURE_1>`, `<FEATURE_2>`, `<FEATURE_3>`
 
----
-
 ## Objectives
 
-The project is structured into several modules, each building on the previous one, similar to the IBM Applied Data Science Capstone SpaceX project structure [attached_file:1][web:25]:
+- Build a reproducible dataset by collecting launch, rocket, core, payload, and site data from the public SpaceX REST API (v4).
+
+- Enrich/validate fields using web-scraped launch tables (e.g., Wikipedia Falcon 9 launch records) and merge sources into one analytical dataset.
+
+- Create a binary target label for first-stage landing success and engineer features relevant to reusability (payload, orbit, site, booster history, etc.).
+
+- Perform EDA using both SQL queries (in a local SQLite workflow) and Python visualizations to understand drivers of success.
+
+- Build interactive dashboards (Dash) and geospatial maps (Folium) to communicate insights.
+
+- Train and compare supervised ML models (e.g., Logistic Regression, SVM, Decision Tree, kNN) and select the best model for landing success prediction.
+
+## Methodology
 
 1. **Data collection through API**  
-   - Request and ingest launch data from the official SpaceX API.  
-   - Normalize nested JSON responses into structured tabular formats suitable for analysis.
 
-_Data Collection and Ingestion Flow:_
+   - Retrieve historical launch records from the SpaceX API and work with nested launch objects that reference rockets, payloads, cores, and launchpads via IDs.
+
+   - Enrich the launch table by resolving these IDs into human-readable fields (e.g., booster version, payload mass/orbit, launch site name + coordinates, and landing outcome attributes).
+
+   - Produce a structured, analysis-ready dataset exported for downstream steps.
+
+_Data Collection and Ingestion Flow :_
 
 ```mermaid
-graph LR
-    A["Data Collection using GET<br/>request to the SpaceX API"]
-        --> B["Decode response as JSON<br/>and load into DataFrame<br/>using json_normalize()"]
-        --> C["Data cleaning process"]
-        --> D["Falcon 9 rocket web scraping<br/>from Wikipedia using BeautifulSoup"]
-        --> E["Parse HTML tables<br/>into DataFrame"]
-        --> F["Export to CSV<br/>for future analysis"]
+
+   graph LR
+   A["Request launches<br/>(SpaceX API)"] --> B["Normalize nested JSON<br/>into launch table"]
+   B --> C["Resolve referenced IDs<br/>(rocket, launchpad, payloads, cores)"]
+   C --> D["Enrich dataset fields<br/>(BoosterVersion, LaunchSite, coords,<br/>PayloadMass, Orbit, landing outcome)"]
+   D --> E["Basic cleaning + column selection<br/>(types, missing values, filters)"]
+   E --> F["Export API-derived dataset<br/>to CSV"]
+
 ````
 
 2. **Data collection with web scraping**  
-   - Scrape external sources (e.g., Wikipedia Falcon 9 launch logs, mission pages) using BeautifulSoup.  
-   - Enrich the dataset with payload details, customer information, and orbit metadata.
+
+   - Collect Falcon 9/Falcon Heavy launch records from a fixed Wikipedia snapshot to ensure reproducibility over time.
+
+   - Parse the relevant HTML launch tables into a tabular dataset and extract key columns such as date/time, booster version, payload mass, orbit, customer, launch outcome, and booster landing status.
+
+   - Save the scraped table as a dataset that can be compared/merged with the API-based dataset.
      
-_Web Scraping Pipeline:_
+_Web Scraping Pipeline :_
 
 ```mermaid
-graph LR
-    A["Apply HTTP GET<br/>method to request<br/>Falcon 9 HTML page"] 
-        --> B["Create BeautifulSoup<br/>object from HTML response"]
-        --> C["Extract all column names<br/>from HTML table header"]
-        --> D["Create DataFrame by<br/>parsing launch HTML tables"]
-        --> E["Export data to CSV"]
+
+   graph LR
+   A["Request Wikipedia page<br/>(fixed snapshot URL)"] --> B["Parse HTML<br/>(BeautifulSoup)"]
+   B --> C["Locate launch records table<br/>(wikitable class)"]
+   C --> D["Extract column headers"]
+   D --> E["Parse rows/cells into<br/>structured table"]
+   E --> F["Clean/standardize fields<br/>(text cleanup, units, dates)"]
+   F --> G["Export scraped dataset<br/>to CSV"]
+
 ```
 
 3. **Data wrangling and feature engineering**  
-   - Clean, filter, and merge heterogeneous data sources.  
-   - Handle missing values and engineer a binary target for first‑stage landing success.  
-   - Create informative features from payload, orbit, launch site, vehicle, and customer attributes.
 
-_Data Wrangling Pipeline:_
+   - Inspect data quality (missing values, data types) and summarize key distributions (launch sites, orbits, and landing outcomes).
+
+   - Convert the detailed "Outcome" field into a binary training label ("Class"): 1 for successful first-stage landing, 0 for unsuccessful/no-landing outcomes (including failed ASDS/RTLS/Ocean and "None" cases).
+
+   - Export the labeled dataset for EDA and modeling.
+
+_Data Wrangling Pipeline :_
 
 ```mermaid
-graph LR
-    A["Explore dataset structure<br/>columns, data types,<br/>sample records"] 
-        --> B["Calculate number of launches<br/>occurrences for each site"]
-        --> C["Create binary label<br/>for landing success"]
-        --> D["Export data to CSV"]
+
+   graph LR
+   A["Load datasets<br/>(API + scraped CSVs)"] --> B["Profile data quality<br/>(missing values, dtypes)"]
+   B --> C["Summarize distributions<br/>(sites, orbits, outcomes)"]
+   C --> D["Define failure/no-landing set<br/>(False ASDS/RTLS/Ocean, None)"]
+   D --> E["Create binary label<br/>(Class: 1=success, 0=fail)"]
+   E --> F["Export labeled dataset<br/>(datasetpart2.csv)"]
 
 ````
 4. **Exploratory Data Analysis with SQL**  
@@ -103,188 +119,6 @@ graph LR
 
 ---
 
-## Data Sources
-
-### SpaceX REST API
-
-Primary data is obtained from the public SpaceX API v4, which exposes launch, rocket, core, payload, and site information [web:21][web:23]:
-
-- Base URL: `https://api.spacexdata.com/v4/`
-- Main endpoints:
-  - `launches`
-  - `cores`
-  - `payloads`
-  - `launchpads`
-  - `landpads`
-
-Key fields used:
-
-- **Launches**: flight number, date, rocket ID, launchpad ID, cores list, payloads list, mission success flag.  
-- **Cores**: core serial, block/version, reuse count, landing attempt, landing success, landing type, landpad.  
-- **Payloads**: payload ID, name, type, mass in kg, orbit, customer(s).  
-
-### Web‑scraped data
-
-To complement the API data, public Falcon 9 launch tables and mission pages (e.g., Wikipedia) are scraped using BeautifulSoup, following common approaches in other SpaceX capstone repositories [attached_file:1][web:22]:
-
-- Extracted fields:
-  - Payload/operator names when missing or aggregated in API.
-  - More detailed orbit labels (e.g., SSO vs. generic LEO).
-  - Mission notes about landing attempts (ASDS vs. RTLS vs. expended).
-
----
-
-## Data Wrangling and Feature Engineering
-
-Data wrangling consolidates API and scraped data into a single analytical dataset:
-
-- **Cleaning**:
-  - Remove obvious duplicates and inconsistent records.  
-  - Standardize categorical values (e.g., site names, customers).  
-  - Handle missing values (e.g., impute `payload_mass_kg` by orbit‑specific medians).
-
-- **Target engineering**:
-  - Define a binary target `landing_success` ∈ {0,1}.  
-  - Success = landing attempt was made and reported as successful (ASDS or RTLS).  
-  - Failure = landing attempt failed or the booster was expended/no landing attempt (depending on project definition; document your choice clearly).
-
-- **Key features**:
-  - Payload: `payload_mass_kg`, number of payloads per launch, payload type.  
-  - Orbit: raw orbit plus an `orbit_class` (LEO, MEO, GTO, GEO, SSO, etc.).  
-  - Vehicle: core serial, booster version/block, `reuse_count`.  
-  - Operations: launch site, landing site, landing type (ASDS/RTLS/Ocean/None), year and month of launch.  
-  - Customer: primary customer, plus a high‑level category (commercial, government, SpaceX/internal).
-
-- **Encoding and scaling**:
-  - One‑hot encode categorical variables (orbit_class, launch_site, customer_type, booster_version).  
-  - Standardize numeric features (payload mass, reuse count, year, optional distances).
-
-Outputs of this stage typically include:
-
-- `data/processed/merged_spacex_launches.csv`  
-- `data/features/train_features.csv`  
-- `data/features/test_features.csv`
-
----
-
-## Exploratory Data Analysis
-
-### SQL‑based EDA
-
-The curated tables are loaded into a database (e.g., SQLite/Db2) to perform SQL‑driven analysis, as in the IBM capstone labs [attached_file:1][web:25]:
-
-Examples:
-
-- Year‑over‑year landing success rates.
-- Success rates by launch site and orbit.
-- Average payload mass by orbit class.
-- Top customers by number of launches.
-
-This step validates data quality and surfaces high‑level trends before modeling.
-
-### Visualization‑based EDA
-
-Using Python visualization libraries (Matplotlib, Seaborn, Plotly):
-
-- **Success vs. payload mass**: scatter plots and trend lines.  
-- **Success vs. orbit**: bar charts of success rate per orbit class.  
-- **Success vs. launch site**: bar or heatmap plots by site and year.  
-- **Correlation analysis**: heatmaps of numeric feature correlations.
-
-These analyses help identify non‑linear relationships, inform feature selection, and expose potential covariate shift.
-
----
-
-## Geospatial Analysis with Folium
-
-Geospatial exploration uses Folium to create interactive maps, as in the IBM launch site location module [attached_file:1][web:22]:
-
-- Map launchpads and landing sites (ASDS vs. RTLS vs. ocean) with markers.  
-- Color‑code markers by landing success or landing type.  
-- Optionally compute approximate distances between launch and landing sites and incorporate them as model features.
-
-This helps understand geographic patterns, such as the difference between East Coast and West Coast operations.
-
----
-
-## Machine Learning Pipeline
-
-### Problem formulation
-
-- **Task**: Binary classification — predict whether the Falcon 9 first stage will successfully land.  
-- **Input**: Engineered mission features (payload, orbit, site, booster history, customer, temporal variables).  
-- **Output**: Predicted probability of landing success and a class label.
-
-### Models implemented
-
-In line with the IBM Applied Data Science Capstone structure, multiple supervised learning models are trained and compared [attached_file:1][web:21]:
-
-- Logistic Regression  
-- Support Vector Machine (SVM)  
-- Decision Tree Classifier  
-- k‑Nearest Neighbors (k‑NN)  
-
-_Machine Learning Pipeline:_
-
-```mermaid
-graph LR
-    A["Data Ingestion<br/>NumPy/Pandas"] --> B["Data Preprocessing"]
-    
-    subgraph Preprocess["Preprocessing"]
-        B1["Handle Missing Values"]
-        B2["One-hot Encode<br/>Categorical"]
-        B3["Scale Features"]
-    end
-    
-    B --> Preprocess
-    Preprocess --> C["Train/Test Split"]
-    
-    subgraph ML["ML Pipeline"]
-        D["Models:<br/>LogReg, SVM, DT, RF"]
-        E["Hyperparameter Tuning<br/>GridSearchCV"]
-    end
-    
-    C --> ML
-    
-    subgraph Eval["Model Optimization"]
-        F["Model Evaluation<br/>Accuracy Metrics"]
-        G["Select Best Model"]
-    end
-    
-    ML --> Eval
-```
-
-### Training and evaluation
-
-Typical pipeline:
-
-1. Split data into training and test sets with stratification on `landing_success`.  
-2. Build a preprocessing pipeline with:
-   - One‑hot encoding for categorical features.  
-   - StandardScaler for numeric features.
-3. Use cross‑validation (e.g., 5‑fold) on the training set.  
-4. Perform hyperparameter tuning with `GridSearchCV` for each model.  
-5. Evaluate the best estimator from each model family on the held‑out test set.
-
-Metrics reported:
-
-- Accuracy  
-- Precision  
-- Recall  
-- F1‑score  
-- ROC–AUC  
-- Confusion matrix  
-
-Summary of results :
-
-```text
-Model               Accuracy  Precision  Recall  F1-score  ROC-AUC
-------------------  --------  ---------  ------  --------  -------
-Logistic Regression  <VAL>     <VAL>      <VAL>   <VAL>     <VAL>
-SVM                  <VAL>     <VAL>      <VAL>   <VAL>     <VAL>
-Decision Tree        <VAL>     <VAL>      <VAL>   <VAL>     <VAL>
-k-NN                 <VAL>     <VAL>      <VAL>   <VAL>     <VAL>
-```
 ### Repository Structure:
 
 ``` text
