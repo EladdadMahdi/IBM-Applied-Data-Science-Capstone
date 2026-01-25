@@ -6,7 +6,6 @@
 ![numpy](https://img.shields.io/badge/NumPy-1.26.4-yellow.svg)
 <!-- /AUTO BADGES -->
 
-
 <img width="430" height="117" alt="image" src="https://github.com/user-attachments/assets/4d9a443a-a6b4-4e4a-923f-198199892c9a" />
 
 ## Project Overview
@@ -118,7 +117,30 @@ _Data Wrangling Pipeline :_
    - Perform hyperparameter tuning and model comparison.  
    - Use the best model as a reusable component for landing success prediction and cost estimation.
 
----
+```mermaid
+
+   graph LR
+   A["Load labeled dataset"] --> B["Preprocessing"]
+   subgraph Preprocess["Preprocessing"]
+   B1["Handle missing values"]
+   B2["One-hot encode categoricals"]
+   B3["Scale numeric features"]
+   end
+   B --> Preprocess
+   Preprocess --> C["Train/Test split"]
+   subgraph ML["Model Training"]
+   D["Train models<br/>(LogReg, SVM, DT, kNN)"]
+   E["Hyperparameter tuning<br/>(GridSearchCV)"]
+   end
+   C --> ML
+   subgraph Eval["Evaluation"]
+   F["Test metrics<br/>(Accuracy, Precision, Recall, F1)"]
+   G["Confusion matrix analysis"]
+   H["Select best model"]
+   end
+   ML --> Eval
+
+```
 
 ### Repository Structure:
 
