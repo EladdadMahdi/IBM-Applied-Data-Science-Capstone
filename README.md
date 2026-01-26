@@ -145,29 +145,41 @@ _Data Wrangling Pipeline :_
 ### Repository Structure:
 
 ``` text
+.
+├── .git/
+├── .hypothesis/
+├── badges/
+├── .github/
+│   └── workflows/
+│       └── update_badges.yml
 ├── data/
-│   ├── Module_1 /
-|       ├──               #
+│   ├── Module_1/
+│   │   ├── dataset_part_1_data_API_collection.csv
+│   │   ├── dataset_part_2_data_wrangling_output.csv
+│   │   └── spacex_web_scraped_data.csv
 │   ├── Module_2/
-|        ├──          # Cleaned and merged datasets
+│   │   ├── dataset_part_3_eda_dataviz_output.csv
+│   │   └── my_data1_eda_sql_output.db
 │   ├── Module_3/
-|        ├──
-|   ├── Module_4/
-|   ├── Module_5/             # Train/test feature matrices
-├── notebooks/
-│   ├── 1_data_collection_api.ipynb
-│   ├── 2_web_scraping.ipynb
-│   ├── 3_data_wrangling.ipynb
-│   ├── 4_eda_sql.ipynb
-│   ├── 5_eda_visualization.ipynb
-│   ├── 6_geospatial_analysis.ipynb
-│   └── 7_ml_modeling.ipynb
+│   │   └── spacex_launch_dash.csv
 ├── dashboards/
-│   ├── spacex_dash_app.py       # Plotly Dash app
-├── requirements.txt             # Python dependencies
-├── .github/workflows/update_badges.yml  # Python dependencies badges
-├── README.md                    # Project documentation
+│   └── spacex_dash_app.py
+├── notebooks/
+│   ├── Module_1/
+│   │   ├── 1_spacex-data-collection-api.ipynb
+│   │   ├── 2_spacex-data-webscraping.ipynb
+│   │   └── 3_spacex-data-wrangling.ipynb
+│   ├── Module_02/
+│   │   ├── 4_eda_sql_sqllite.ipynb
+│   │   └── 5_eda_dataviz.ipynb
+│   ├── Module_03/
+│   │   └── 6_Interactive_Visual_Analytics_With_Folium.ipynb
+│   └── Module_04/
+│       └── 7_Machine_Learning_Prediction.ipynb
+├── requirements.txt
+└── README.md
 ```
+
 ### Acknowledgments
 
 - IBM and Coursera for the Applied Data Science Capstone template and instructional material.
