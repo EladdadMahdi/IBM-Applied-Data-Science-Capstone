@@ -4,12 +4,25 @@
 ![scikit-learn](https://img.shields.io/badge/scikit_learn-1.8.0-blue.svg)
 ![pandas](https://img.shields.io/badge/pandas-2.2.3-green.svg)
 ![numpy](https://img.shields.io/badge/NumPy-1.26.4-yellow.svg)
+![nbviewer](https://img.shields.io/badge/render-nbviewer-orange.svg)
 <!-- /AUTO BADGES -->
 
 
-
-
 <img width="430" height="117" alt="image" src="https://github.com/user-attachments/assets/4d9a443a-a6b4-4e4a-923f-198199892c9a" />
+
+## Project Highlights
+
+| **Section** | **Description** |
+|-------------|-----------------|
+| **Project Overview**     | SpaceX Falcon 9 first-stage landing prediction |
+| **Objectives**           | Build ML model for reusable rocket success prediction |
+| **Methodology**          | API + scraping → EDA → Dash/Folium → ML models |
+| **Model Insights**       | **SVM/KNN/Logistic: 83.33%** (3 FP detected) |
+| **Repository Structure** | 7 notebooks + dashboards + datasets |
+| **Acknowledgement**      | IBM/Coursera + SpaceX API |
+
+---
+
 
 ## Project Overview
 
@@ -137,8 +150,17 @@ _Data Wrangling Pipeline :_
    ML --> Eval
 
 ```
+## Model Insights
 
-### Repository Structure:
+- Best models: SVM, KNN, Logistic Regression (83.33%)
+- Decision Tree shows overfitting (77.78% test)
+- The confusion matrix of our best model (SVM, 83.33%) reveals **3 false positives** - predicting successful landings that actually failed. This over-optimistic bias could lead competitors to underestimate launch costs when benchmarking against SpaceX.
+
+## Business Impact:
+
+While accuracy is solid at 83.33%, reducing false positives would be critical for cost estimation reliability.
+
+## Repository Structure:
 
 ``` text
 .
