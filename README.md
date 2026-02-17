@@ -156,7 +156,6 @@ _Data Wrangling Pipeline :_
 </div>
 
 - Decision Tree shows overfitting (77.78% test)
-
 - The confusion matrix of our best model (SVM, 83.33%) reveals **3 false positives** - predicting successful landings that actually failed. This over-optimistic bias could lead competitors to underestimate launch costs when benchmarking against SpaceX.
 
 <div align="center">
