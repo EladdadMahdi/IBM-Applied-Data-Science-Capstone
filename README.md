@@ -6,23 +6,16 @@
 ![numpy](https://img.shields.io/badge/NumPy-1.26.4-yellow.svg)
 <!-- /AUTO BADGES -->
 
-
-
 <img width="430" height="117" alt="image" src="https://github.com/user-attachments/assets/4d9a443a-a6b4-4e4a-923f-198199892c9a" />
 
 ## Project Highlights
 
-| **Section** | **Description** |
-|-------------|-----------------|
-| **Project Overview**     | SpaceX Falcon 9 first-stage landing prediction |
-| **Objectives**           | Build ML model for reusable rocket success prediction |
-| **Methodology**          | API + scraping → EDA → Dash/Folium → ML models |
-| **Model Insights**       | **SVM/KNN/Logistic: 83.33%** (3 FP detected) |
-| **Repository Structure** | 7 notebooks + dashboards + datasets |
-| **Acknowledgement**      | IBM/Coursera + SpaceX API |
-
----
-
+- Project Overview
+- *Objectives        
+- Methodology      
+- Model Insights    
+- Repository Structure
+- Acknowledgement  
 
 ## Project Overview
 
