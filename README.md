@@ -13,7 +13,7 @@
 ## Project Highlights
 
 - Project Overview
-- *Objectives        
+- Objectives        
 - Methodology      
 - Model Insights    
 - Repository Structure
