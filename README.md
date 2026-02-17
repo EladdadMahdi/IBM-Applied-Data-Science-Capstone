@@ -154,14 +154,14 @@ _Data Wrangling Pipeline :_
 - Best models: SVM, KNN, Logistic Regression (83.33%)
 
 <div align="center">
-<img src="image.png" width="350">
+<img src="images\image.png" width="350">
 </div>
 
 - Decision Tree shows overfitting (77.78% test)
 - The confusion matrix of our best model (SVM, 83.33%) reveals **3 false positives** - predicting successful landings that actually failed. This over-optimistic bias could lead competitors to underestimate launch costs when benchmarking against SpaceX.
 
 <div align="center">
-<img src="image-1.png" width="350">
+<img src="images\image-1.png" width="350">
 </div>
 
 
