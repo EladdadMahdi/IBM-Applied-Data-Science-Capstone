@@ -6,9 +6,6 @@
 ![numpy](https://img.shields.io/badge/NumPy-1.26.4-yellow.svg)
 <!-- /AUTO BADGES -->
 
-
-
-
 <img width="430" height="117" alt="image" src="https://github.com/user-attachments/assets/4d9a443a-a6b4-4e4a-923f-198199892c9a" />
 
 ## Project Overview
@@ -16,13 +13,6 @@
 This repository implements an end-to-end data science capstone project to predict whether the SpaceX Falcon 9 first stage will successfully land (and be reusable), following the IBM Applied Data Science Capstone structure.
 
 The workflow covers data acquisition (SpaceX API + web sources), data wrangling, EDA (SQL + visualization), interactive analytics (Folium + Dash), and ML classification models.
-
-> **Key results (to fill in later)**
-> - Best model: `<MODEL_NAME>`
-> - Test accuracy: `<ACCURACY>`
-> - Precision / Recall / F1: `<PREC> / <REC> / <F1>`
-> - ROC–AUC: `<ROC_AUC>`
-> - Top features: `<FEATURE_1>`, `<FEATURE_2>`, `<FEATURE_3>`
 
 ## Objectives
 
