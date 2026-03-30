@@ -6,26 +6,16 @@
 ![numpy](https://img.shields.io/badge/NumPy-1.26.4-yellow.svg)
 <!-- /AUTO BADGES -->
 
-
-
-
-
-
-
-
-
-
-
 <img width="430" height="117" alt="image" src="https://github.com/user-attachments/assets/4d9a443a-a6b4-4e4a-923f-198199892c9a" />
 
 ## Project Highlights
 
 - Project Overview
-- Objectives        
-- Methodology      
-- Model Insights    
+- Objectives
+- Methodology
+- Model Insights
 - Repository Structure
-- Acknowledgement  
+- Acknowledgement
 
 ## Project Overview
 
@@ -49,7 +39,7 @@ The workflow covers data acquisition (SpaceX API + web sources), data wrangling,
 
 ## Methodology
 
-1. **Data collection through API**  
+1. **Data collection through API**
 
    - Retrieve historical launch records from the SpaceX API and work with nested launch objects that reference rockets, payloads, cores, and launchpads via IDs.
 
@@ -70,14 +60,14 @@ _Data Collection and Ingestion Flow :_
 
 ````
 
-2. **Data collection with web scraping**  
+2. **Data collection with web scraping**
 
    - Collect Falcon 9/Falcon Heavy launch records from a fixed Wikipedia snapshot to ensure reproducibility over time.
 
    - Parse the relevant HTML launch tables into a tabular dataset and extract key columns such as date/time, booster version, payload mass, orbit, customer, launch outcome, and booster landing status.
 
    - Save the scraped table as a dataset that can be compared/merged with the API-based dataset.
-     
+
 _Web Scraping Pipeline :_
 
 ```mermaid
@@ -92,7 +82,7 @@ _Web Scraping Pipeline :_
 
 ```
 
-3. **Data wrangling and feature engineering**  
+3. **Data wrangling and feature engineering**
 
    - Inspect data quality (missing values, data types) and summarize key distributions (launch sites, orbits, and landing outcomes).
 
@@ -112,21 +102,21 @@ _Data Wrangling Pipeline :_
    E --> F["Export labeled dataset<br/>(datasetpart2.csv)"]
 
 ````
-4. **Exploratory Data Analysis with SQL**  
-   - Load curated tables into a relational database (SQLite/Db2).  
+4. **Exploratory Data Analysis with SQL**
+   - Load curated tables into a relational database (SQLite/Db2).
    - Use SQL queries to compute aggregates and trends (yearly success rates, performance by launch site, payload and customer statistics).
 
-5. **Exploratory Data Analysis with visualization**  
-   - Use Matplotlib, Seaborn, and Plotly to visualize relationships between mission parameters and landing outcomes.  
+5. **Exploratory Data Analysis with visualization**
+   - Use Matplotlib, Seaborn, and Plotly to visualize relationships between mission parameters and landing outcomes.
    - Explore success rate vs. payload mass, orbit type, launch site, and time.
 
-6. **Interactive visual analytics with Folium and Dash**  
-   - Build geospatial maps of launch and landing sites with Folium.  
+6. **Interactive visual analytics with Folium and Dash**
+   - Build geospatial maps of launch and landing sites with Folium.
    - Develop an interactive Plotly Dash application for real‑time visual analytics.
 
-7. **Machine learning prediction**  
-   - Implement and evaluate multiple supervised learning models (Logistic Regression, SVM, Decision Trees, k‑NN, etc.).  
-   - Perform hyperparameter tuning and model comparison.  
+7. **Machine learning prediction**
+   - Implement and evaluate multiple supervised learning models (Logistic Regression, SVM, Decision Trees, k‑NN, etc.).
+   - Perform hyperparameter tuning and model comparison.
    - Use the best model as a reusable component for landing success prediction and cost estimation.
 
 ```mermaid
