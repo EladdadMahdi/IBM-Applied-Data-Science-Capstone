@@ -6,26 +6,27 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
+    if: github.actor != 'github-actions[bot]'
     steps:
-    - uses: actions/checkout@v4
-    - name: Insert badges at top
-      run: |
-        # Créer badges
-        cat > badges.md << 'EOF'
-        <!-- AUTO BADGES -->
-        ![scikit-learn](https://img.shields.io/badge/scikit_learn-1.8.0-blue.svg)
-        ![pandas](https://img.shields.io/badge/pandas-2.2.3-green.svg)
-        ![numpy](https://img.shields.io/badge/NumPy-1.26.4-yellow.svg)
-        <!-- /AUTO BADGES -->
-        
-        EOF
-        
-        # Supprimer anciennes badges
-        sed -i '/<!-- AUTO BADGES -->/,/<!-- \/AUTO BADGES -->/d' README.md
-        
-        # Insérer après ligne 2 (après le titre)
-        sed -i '2r badges.md' README.md
-        
-    - uses: stefanzweifel/git-auto-commit-action@v5
-      with:
-        commit_message: 'libs badges '
+      - uses: actions/checkout@v4
+      - name: Insert badges at top
+        run: |
+          # Créer badges
+          cat > badges.md << 'EOF'
+          <!-- AUTO BADGES -->
+          ![scikit-learn](https://img.shields.io/badge/scikit_learn-1.8.0-blue.svg)
+          ![pandas](https://img.shields.io/badge/pandas-2.2.3-green.svg)
+          ![numpy](https://img.shields.io/badge/NumPy-1.26.4-yellow.svg)
+          <!-- /AUTO BADGES -->
+          
+          EOF
+          
+          # Supprimer anciennes badges
+          sed -i '/<!-- AUTO BADGES -->/,/<!-- \/AUTO BADGES -->/d' README.md
+          
+          # Insérer après ligne 2 (après le titre)
+          sed -i '2r badges.md' README.md
+          
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 'libs badges '
