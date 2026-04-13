@@ -18,9 +18,9 @@
 
 
 
-[📄 Obtained certificate](./IBM_DS_PROFESSIONAL_CERTIFICATE.pdf)
 [📄 Obtained certificate](./IBM_DS_PROFESSIONAL_CERTIFICATE.png)
 ## Project Highlights
+
 
 - Project Overview
 - Objectives
